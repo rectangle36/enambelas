@@ -50,6 +50,10 @@
         }
 
         /* Quote block styles */
+        .note_container {
+            display: none;
+        }
+        
         .quote {
             display: none;
             font-size: 24px;
@@ -136,9 +140,7 @@
         <!-- The folder button (Initially displayed) -->
         <button class="button" id="openButton" onclick="showQuote()">Birthday Wishes</button>
 
-        <!-- The quote and shuffle button (Initially hidden) -->
-        <div class="quote" id="quoteContainer">
-            <div id="note_container" style="display: block;">
+        <div id="note_container" style="display: block;">
                 <div class="word">
                     <img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
                     <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
@@ -150,7 +152,8 @@
                 <br class="clear">
             </div>
 
-            
+        <!-- The quote and shuffle button (Initially hidden) -->
+        <div class="quote" id="quoteContainer">
             <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
             <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
         </div>
@@ -175,8 +178,10 @@
 
         // Show the quote when button is clicked
         function showQuote() {
+            document.getElementById('note_container2').style.display = 'none';
             document.getElementById('openButton').style.display = 'none'; // Hide the button
             const quoteContainer = document.getElementById('quoteContainer');
+            noteContainer.style.display = 'block';
             quoteContainer.style.display = 'block'; // Show the quote
             quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
             playAudio(); // Play the audio when the quote is opened
