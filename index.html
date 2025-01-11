@@ -42,25 +42,38 @@
         .folder {
             width: 90%;
             height: 90px;
-            background: linear-gradient(145deg, #fff, #f7f7f7);
+            background: #ffe680;
             margin: 12px 0;
-            border: 2px solid #ddd;
-            border-radius: 6px;
+            border: 2px solid #d4b600;
+            border-radius: 6px 6px 0 0;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             font-size: 18px;
             font-weight: 600;
             color: #444;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, opacity 0.3s ease;
             position: relative;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .folder:before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            width: 30%;
+            height: 10px;
+            background: #ffe680;
+            border: 2px solid #d4b600;
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
         }
 
         .folder:hover {
             transform: scale(1.05);
-            background: linear-gradient(145deg, #fefefe, #f3f3f3);
+            background: #ffec99;
         }
 
         .folder.open {
