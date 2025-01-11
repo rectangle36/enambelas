@@ -180,5 +180,21 @@
             document.getElementById('quoteIframe').src = `https://open.spotify.com/embed/track/${randomQuote.track}`;
         }
     </script>
+
+    <script>
+        function autoplay() {
+            var t = setTimeout(function(){
+                var button = document.querySelector('[title="Play"]') || false;
+                if (button) {
+                    console.log('Click', button)
+                    button.click()
+                }
+            }, 999)
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            autoplay()
+        })
+    </script>
+    
 </body>
 </html>
