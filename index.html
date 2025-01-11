@@ -38,9 +38,9 @@
         }
 
         .button {
-            margin-top: 25px;
-            background: #FFFFFF; /* White background for button */
-            color: #091010; /* Dark text color */
+            margin-top: 50px;
+            background: #93361d;
+            color: #ffffff;
             padding: 20px;
             border: none;
             font-size: 18px;
@@ -55,8 +55,8 @@
             font-size: 24px;
             font-weight: bold;
             margin: 20px;
-            color: #091010; /* Dark text color */
-            background-color: #FFFFFF; /* White background for quote */
+            color: white;
+            background-color: #091010;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -66,7 +66,7 @@
 
         .shuffle-button {
             background: #091010;
-            color: white;
+            color: #ffffff;
             padding: 10px;
             border: none;
             font-size: 16px;
@@ -101,21 +101,9 @@
             margin-bottom: 20px;
         }
 
-        /* New style for image container */
-        .image-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 400px; /* Same width as the birthday header text */
-            margin: 20px auto;
-        }
-
-        .image-container img {
-            width: 50px; /* Make each image a square */
-            height: 50px;
-            object-fit: cover; /* Stretch the image to fill the square */
-            border-radius: 5px;
+        /* Hide note containers */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -126,52 +114,27 @@
         Your browser does not support the audio element.
     </audio>
 
-    <div class="quote-container">
-        <!-- Image container for the birthday wish letters -->
-        <div id="note_container" style="display: block;">
-            <div class="word">
-                <img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
-                <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
-                <img src="http://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(2.5deg);">
-                <img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
-                <img src="http://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(6deg);">
-                <img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
-            </div>
-            <br class="clear">
+    <div id="note_container2">
+        <!-- Note container 2 content here (images and other elements) -->
+        <div class="word">
+            <img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char" style="transform: rotate(10deg);">
+            <img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char" style="transform: rotate(3deg);">
+            <img src="http://farm7.staticflickr.com/6162/6204057052_072c6851a0_t.jpg" class="char" style="transform: rotate(4deg);">
+            <!-- Add other images here -->
         </div>
+    </div>
 
-        <div id="note_container2" style="display: block;">
-            <div class="word">
-                <img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(10deg);">
-                <img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
-                <img src="http://farm7.staticflickr.com/6162/6204057052_072c6851a0_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(4deg);">
-                <img src="http://farm7.staticflickr.com/6132/5982183661_30be134733_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
-                <img src="http://farm8.staticflickr.com/7168/6596211537_41aff58351_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
-                <img src="/assets/ransom_space.png" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(0deg);">
+    <div id="note_container1" class="hidden">
+        <!-- Note container 1 content here -->
+        <div class="quote-container">
+            <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
+
+            <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
+
+            <div class="quote" id="quoteContainer">
+                <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
+                <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
             </div>
-        
-            <div class="word">
-                <img src="http://farm3.staticflickr.com/2009/5740446052_8d6b1f6500_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
-                <img src="http://farm8.staticflickr.com/7347/16552493976_ba2506b77a_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
-                <img src="http://farm1.staticflickr.com/308/19772665506_5ec51cc904_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(4deg);">
-                <img src="http://farm5.staticflickr.com/4442/36065960030_f18243b95e_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
-                <img src="http://farm4.staticflickr.com/3441/3778499276_da5c981f3c_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
-                <img src="http://farm5.staticflickr.com/4087/4840193735_135b5f4a5f_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-3deg);">
-                <img src="http://farm5.staticflickr.com/4083/4840802406_ce72b7e12b_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
-                <img src="http://farm5.staticflickr.com/4132/4840169129_541eb7fd91_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
-            </div>
-        
-            <br class="clear">
-        </div>
-
-        
-        <!-- The folder button (Initially displayed) -->
-        <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
-
-        <!-- The quote and shuffle button (Initially hidden) -->
-        <div class="quote" id="quoteContainer">
-            <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
-            <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
         </div>
     </div>
 
@@ -195,6 +158,8 @@
         // Show the quote when button is clicked
         function showQuote() {
             document.getElementById('openButton').style.display = 'none'; // Hide the button
+            document.getElementById('note_container2').classList.add('hidden'); // Hide note container 2
+            document.getElementById('note_container1').classList.add('hidden'); // Hide note container 1
             const quoteContainer = document.getElementById('quoteContainer');
             quoteContainer.style.display = 'block'; // Show the quote
             quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
@@ -206,6 +171,11 @@
             const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
             document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
         }
+
+        // On page load, show note container 2
+        window.onload = function() {
+            document.getElementById('note_container2').style.display = 'block';
+        };
     </script>
 </body>
 </html>
