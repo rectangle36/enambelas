@@ -13,56 +13,86 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            perspective: 1000px;
             overflow: hidden;
         }
 
+        .drawer-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .folder-closed {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background: #ffe680;
+            border: 2px solid #d4b600;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .folder-closed:hover {
+            transform: scale(1.05);
+        }
+
+        .open-button {
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
         .drawer {
-            width: 600px;
-            height: 400px;
+            display: none;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
             background: #ffe680;
             border: 2px solid #d4b600;
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            transform-style: preserve-3d;
-            transform: rotateX(10deg) rotateY(0deg);
             position: relative;
+            animation: slideIn 0.4s ease forwards;
         }
 
         .folders {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 560px;
-            height: 360px;
+            padding: 10px;
             overflow-y: auto;
-            transform-style: preserve-3d;
-            transform: translateZ(-50px);
+            max-height: 300px;
         }
 
         .folder {
-            width: 520px;
+            width: 100%;
             height: 80px;
             background: #fff;
-            margin: 12px auto;
+            margin: 12px 0;
             border: 2px solid #bbb;
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #444;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            transform: rotateX(0deg) translateZ(0);
             transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .folder:hover {
-            transform: translateZ(20px);
+            transform: translateZ(10px);
             background: #ffec99;
         }
 
@@ -116,11 +146,11 @@
 
         @keyframes slideIn {
             from {
-                transform: translateX(-50%) scale(0.9);
+                transform: scale(0.9);
                 opacity: 0.7;
             }
             to {
-                transform: translateX(-50%) scale(1);
+                transform: scale(1);
                 opacity: 1;
             }
         }
@@ -133,36 +163,56 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        @media (max-width: 768px) {
+            .folder {
+                height: 60px;
+            }
+            iframe {
+                height: 60px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="drawer">
-        <div class="folders">
-            <div class="folder" onclick="openFolder(this)">
-                <div class="folder-content">
-                    <button class="close" onclick="closeFolder(event, this)">×</button>
-                    <p>"You are your best thing."</p>
-                    <iframe src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
+    <div class="drawer-container">
+        <div class="folder-closed" onclick="openDrawer()">
+            <button class="open-button">Open Folder</button>
+        </div>
+        <div class="drawer">
+            <div class="folders">
+                <div class="folder" onclick="openFolder(this)">
+                    <div class="folder-content">
+                        <button class="close" onclick="closeFolder(event, this)">×</button>
+                        <p>"You are your best thing."</p>
+                        <iframe src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
+                    </div>
                 </div>
-            </div>
-            <div class="folder" onclick="openFolder(this)">
-                <div class="folder-content">
-                    <button class="close" onclick="closeFolder(event, this)">×</button>
-                    <p>"Keep a green tree in your heart and perhaps a singing bird will come."</p>
-                    <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" allow="encrypted-media"></iframe>
+                <div class="folder" onclick="openFolder(this)">
+                    <div class="folder-content">
+                        <button class="close" onclick="closeFolder(event, this)">×</button>
+                        <p>"Keep a green tree in your heart and perhaps a singing bird will come."</p>
+                        <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" allow="encrypted-media"></iframe>
+                    </div>
                 </div>
-            </div>
-            <div class="folder" onclick="openFolder(this)">
-                <div class="folder-content">
-                    <button class="close" onclick="closeFolder(event, this)">×</button>
-                    <p>"The sun will rise, and we will try again."</p>
-                    <iframe src="https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3" allow="encrypted-media"></iframe>
+                <div class="folder" onclick="openFolder(this)">
+                    <div class="folder-content">
+                        <button class="close" onclick="closeFolder(event, this)">×</button>
+                        <p>"The sun will rise, and we will try again."</p>
+                        <iframe src="https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3" allow="encrypted-media"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        function openDrawer() {
+            document.querySelector('.folder-closed').style.display = 'none';
+            document.querySelector('.drawer').style.display = 'block';
+        }
+
         function openFolder(folder) {
             folder.classList.add('open');
         }
