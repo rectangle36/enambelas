@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Drawer</title>
+    <title>Quote Shuffle</title>
     <style>
         body {
             margin: 0;
@@ -65,85 +65,69 @@
             position: relative;
             animation: slideIn3D 0.5s ease forwards;
             transform-origin: top;
-            perspective: 1500px; /* Add perspective for 3D effect */
+            perspective: 1500px;
         }
 
-        .folders {
-            padding: 10px;
-            overflow-y: auto;
-            max-height: 300px;
-        }
-
-        .folder {
+        .card {
             width: 100%;
-            height: 80px;
+            height: 300px;
             background: #fff;
-            margin: 12px 0;
+            margin: 20px 0;
             border: 2px solid #bbb;
             border-radius: 6px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-size: 16px;
             font-weight: 600;
             color: #444;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
             transition: transform 0.3s ease, background 0.3s ease;
+            padding: 20px;
         }
 
-        .folder:hover {
+        .card:hover {
             transform: translateZ(10px);
             background: #ffec99;
         }
 
-        .folder.open {
-            position: absolute;
-            width: 95%;
-            height: 85%;
-            top: 7%;
-            left: 50%;
-            transform: translateX(-50%) translateZ(50px);
-            background: #fdfdfd;
-            z-index: 10;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            cursor: default;
-            border-radius: 10px;
-            animation: slideIn3D 0.5s ease forwards;
+        .quote-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
-        .folder-content {
-            display: none;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .folder.open .folder-content {
-            display: block;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff5757;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
+        .shuffle-button {
             font-size: 18px;
+            font-weight: bold;
+            color: #444;
+            background: #d4b600;
+            border: none;
             cursor: pointer;
             outline: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
 
-        .close:hover {
-            background: #e04646;
+        .shuffle-button:hover {
+            background: #c7a400;
+        }
+
+        iframe {
+            margin-top: 20px;
+            width: 100%;
+            height: 80px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            iframe {
+                height: 60px;
+            }
         }
 
         /* New 3D SlideIn animation */
@@ -157,25 +141,6 @@
                 opacity: 1;
             }
         }
-
-        iframe {
-            margin-top: 20px;
-            width: 100%;
-            height: 80px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .folder {
-                height: 60px;
-            }
-            iframe {
-                height: 60px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -184,46 +149,35 @@
             <button class="open-button">Open Folder</button>
         </div>
         <div class="drawer">
-            <div class="folders">
-                <div class="folder" onclick="openFolder(this)">
-                    <div class="folder-content">
-                        <button class="close" onclick="closeFolder(event, this)">×</button>
-                        <p>"You are your best thing."</p>
-                        <iframe src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
-                    </div>
-                </div>
-                <div class="folder" onclick="openFolder(this)">
-                    <div class="folder-content">
-                        <button class="close" onclick="closeFolder(event, this)">×</button>
-                        <p>"Keep a green tree in your heart and perhaps a singing bird will come."</p>
-                        <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" allow="encrypted-media"></iframe>
-                    </div>
-                </div>
-                <div class="folder" onclick="openFolder(this)">
-                    <div class="folder-content">
-                        <button class="close" onclick="closeFolder(event, this)">×</button>
-                        <p>"The sun will rise, and we will try again."</p>
-                        <iframe src="https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3" allow="encrypted-media"></iframe>
-                    </div>
-                </div>
+            <div class="card" id="quoteCard">
+                <p class="quote-text" id="quoteText">"You are your best thing."</p>
+                <iframe id="quoteIframe" src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
+                <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
             </div>
         </div>
     </div>
 
     <script>
+        const quotes = [
+            { text: '"You are your best thing."', track: "1Xyo4u8uXC1ZmMpatF05PJ" },
+            { text: '"Keep a green tree in your heart and perhaps a singing bird will come."', track: "3n3Ppam7vgaVa1iaRUc9Lp" },
+            { text: '"The sun will rise, and we will try again."', track: "7qiZfU4dY1lWllzX7mPBI3" },
+            { text: '"The only way to do great work is to love what you do."', track: "1Xyo4u8uXC1ZmMpatF05PJ" },
+            { text: '"Success is not final, failure is not fatal: It is the courage to continue that counts."', track: "0VjIjW4GlUZAMYd2vXMi3b" }
+        ];
+
         function openDrawer() {
             document.querySelector('.folder-closed').style.display = 'none';
             document.querySelector('.drawer').style.display = 'block';
         }
 
-        function openFolder(folder) {
-            folder.classList.add('open');
-        }
+        function shuffleQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[randomIndex];
 
-        function closeFolder(event, button) {
-            event.stopPropagation(); // Prevent the parent click event from firing
-            const folder = button.closest('.folder');
-            folder.classList.remove('open');
+            // Update quote text and Spotify iframe
+            document.getElementById('quoteText').innerText = randomQuote.text;
+            document.getElementById('quoteIframe').src = `https://open.spotify.com/embed/track/${randomQuote.track}`;
         }
     </script>
 </body>
