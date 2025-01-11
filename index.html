@@ -3,68 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wishes</title>
+    <title>Note Containers</title>
     <style>
-        /* Apply gradient background */
-        .gradient-background {
-            background: linear-gradient(108deg, #93361d, #f3b386, #091010, #ce7891);
-            background-size: 240% 240%;
-            animation: gradient-animation 28s ease infinite;
-            height: 100vh;
+        /* Styles for the note containers and images */
+        .word {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            flex-wrap: wrap;
         }
-
-        /* Keyframes for gradient animation */
-        @keyframes gradient-animation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        .char {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin: 0 5px;
         }
-
-        .quote-container {
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+        .clear {
+            clear: both;
         }
-
-        .button {
-            margin-top: 50px;
-            background: #93361d;
-            color: #ffffff;
-            padding: 20px;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 8px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Quote block styles */
-        .quote {
+        
+        /* Styles for the quote container */
+        #quote_container {
             display: none;
-            font-size: 24px;
-            font-weight: bold;
-            margin: 20px;
-            color: white;
-            background-color: #091010;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            animation: fadeIn 1s forwards, tiltEffect 0.5s 1s forwards; /* Added tilt effect */
+            animation: scale-in-ver-center 1s cubic-bezier(0.075, 0.820, 0.165, 1.000) both;
         }
 
-        /* New animation for scaling in */
         @keyframes scale-in-ver-center {
             0% {
                 transform: scale(0);
@@ -76,120 +37,91 @@
             }
         }
 
-        /* Tilt effect after scaling */
-        @keyframes tiltEffect {
-            0% {
-                transform: rotate(0deg); /* Initial position */
-            }
-            100% {
-                transform: rotate(5deg); /* Tilt by 5 degrees */
-            }
+        /* Tilt effect for the quote container after animation */
+        .tilt {
+            transform: rotate(5deg);
         }
 
-        .scale-in-ver-center {
-            animation: scale-in-ver-center 1s cubic-bezier(0.075, 0.820, 0.165, 1.000) both;
-        }
-
-        .shuffle-button {
-            background: #091010;
-            color: #ffffff;
-            padding: 10px;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .shuffle-button:hover {
-            background: #3b4a7d;
-        }
-
-        /* Hide audio controls */
-        audio {
-            display: none;
-        }
-
-        .birthday-header {
-            font-size: 30px;
-            font-weight: bold;
-            color: #ffdc00;
-            margin-bottom: 20px;
-        }
-
-        /* Hide note containers */
+        /* Hide/show elements */
         .hidden {
             display: none;
         }
     </style>
 </head>
-<body class="gradient-background">
-    <!-- Audio element to play music (initially paused) -->
-    <audio id="backgroundAudio" loop>
-        <source src="https://rectangle36.github.io/hehehe/Childish%20Gambino%20-%203005_[cut_20sec].mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+<body>
 
-    <!-- Note container 2 with images -->
-    <div id="note_container2">
+    <div id="note_container2" style="display: block;">
         <div class="word">
             <img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char" style="transform: rotate(10deg);">
             <img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char" style="transform: rotate(3deg);">
             <img src="http://farm7.staticflickr.com/6162/6204057052_072c6851a0_t.jpg" class="char" style="transform: rotate(4deg);">
-            <!-- Add other images here -->
+            <img src="http://farm7.staticflickr.com/6132/5982183661_30be134733_t.jpg" class="char" style="transform: rotate(-10deg);">
+            <img src="http://farm8.staticflickr.com/7168/6596211537_41aff58351_t.jpg" class="char" style="transform: rotate(8deg);">
         </div>
+
+        <div class="word">
+            <img src="http://farm3.staticflickr.com/2009/5740446052_8d6b1f6500_t.jpg" class="char" style="transform: rotate(-10deg);">
+            <img src="http://farm8.staticflickr.com/7347/16552493976_ba2506b77a_t.jpg" class="char" style="transform: rotate(2deg);">
+            <img src="http://farm1.staticflickr.com/308/19772665506_5ec51cc904_t.jpg" class="char" style="transform: rotate(4deg);">
+            <img src="http://farm5.staticflickr.com/4442/36065960030_f18243b95e_t.jpg" class="char" style="transform: rotate(-10deg);">
+            <img src="http://farm4.staticflickr.com/3441/3778499276_da5c981f3c_t.jpg" class="char" style="transform: rotate(-1deg);">
+            <img src="http://farm5.staticflickr.com/4087/4840193735_135b5f4a5f_t.jpg" class="char" style="transform: rotate(-3deg);">
+            <img src="http://farm5.staticflickr.com/4083/4840802406_ce72b7e12b_t.jpg" class="char" style="transform: rotate(8deg);">
+            <img src="http://farm5.staticflickr.com/4132/4840169129_541eb7fd91_t.jpg" class="char" style="transform: rotate(3deg);">
+        </div>
+
+        <br class="clear">
     </div>
 
-    <!-- Note container 1 with quote and button -->
-    <div id="note_container1" class="hidden">
-        <div class="quote-container">
-            <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
-            <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
-            <div class="quote scale-in-ver-center" id="quoteContainer">
-                <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
-                <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
-            </div>
+    <!-- Quote and Other Elements -->
+    <div id="quote_container" class="hidden">
+        <p>Here’s a quote!</p>
+    </div>
+
+    <div id="birthday_header">
+        <h1>Happy Birthday!</h1>
+    </div>
+
+    <button id="quote_button">Show Quote</button>
+    <button id="shuffle_button" class="hidden">Shuffle Images</button>
+
+    <!-- Note Container 1 (hidden initially) -->
+    <div id="note_container" class="hidden">
+        <div class="word">
+            <img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" style="transform: rotate(2deg);">
+            <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="char" style="transform: rotate(-1deg);">
+            <img src="http://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" class="char" style="transform: rotate(2.5deg);">
+            <img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="char" style="transform: rotate(8deg);">
+            <img src="http://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" class="char" style="transform: rotate(6deg);">
+            <img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="char" style="transform: rotate(3deg);">
         </div>
+        <br class="clear">
     </div>
 
     <script>
-        // Play background audio when the quote is opened
-        function playAudio() {
-            const audio = document.getElementById('backgroundAudio');
-            audio.play(); // Start playing the audio
-        }
+        // Event listeners to toggle visibility
+        document.getElementById('quote_button').addEventListener('click', function() {
+            // Hide note container 2, quote button, and birthday header
+            document.getElementById('note_container2').style.display = 'none';
+            document.getElementById('quote_button').style.display = 'none';
+            document.getElementById('birthday_header').style.display = 'none';
 
-        // Birthday wish data
-        const birthdayWishes = [
-            '"Wishing you a day filled with happiness and a year filled with joy!"',
-            '"May your birthday be the start of a year filled with good luck, good health, and much happiness!"',
-            '"Happy Birthday! May your day be filled with laughter, love, and joy!"',
-            '"Here’s to another year of success, happiness, and unforgettable moments!"',
-            '"On your special day, may all your dreams come true. Wishing you the happiest birthday!"',
-            '"May your birthday be as wonderful and amazing as you are. Enjoy your day!"'
-        ];
+            // Show quote container, note container 1, and shuffle button
+            document.getElementById('quote_container').classList.remove('hidden');
+            document.getElementById('note_container').style.display = 'block';
+            document.getElementById('shuffle_button').classList.remove('hidden');
 
-        // Show the quote when button is clicked
-        function showQuote() {
-            document.getElementById('openButton').style.display = 'none'; // Hide the button
-            document.getElementById('note_container2').classList.add('hidden'); // Hide note container 2
-            document.getElementById('note_container1').classList.remove('hidden'); // Show note container 1 (quote)
-            const quoteContainer = document.getElementById('quoteContainer');
-            quoteContainer.style.display = 'block'; // Show the quote
-            playAudio(); // Play the audio when the quote is opened
-        }
+            // Add tilt effect to quote container after animation
+            setTimeout(function() {
+                document.getElementById('quote_container').classList.add('tilt');
+            }, 1000);
+        });
 
-        // Shuffle the quote when shuffle button is clicked
-        function shuffleQuote() {
-            const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
-            document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
-        }
-
-        // On page load, show note container 2 and hide note container 1
-        window.onload = function() {
-            document.getElementById('note_container2').style.display = 'block'; // Show note container 2
-            document.getElementById('note_container1').style.display = 'none'; // Ensure note container 1 is hidden
-        };
+        // Event listener for shuffle button (you can add functionality here)
+        document.getElementById('shuffle_button').addEventListener('click', function() {
+            alert('Shuffle button clicked');
+        });
     </script>
+
 </body>
 </html>
