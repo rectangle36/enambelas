@@ -36,10 +36,39 @@
             justify-content: center;
             cursor: pointer;
             transition: transform 0.3s ease;
+            position: relative;
         }
 
         .folder-closed:hover {
             transform: scale(1.05);
+        }
+
+        .open-folder-icon {
+            width: 100px;
+            height: 60px;
+            background: #ffe680;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .open-folder-icon svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .folder-tab {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 60px;
+            height: 20px;
+            background: #d4b600;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            z-index: 2;
         }
 
         .open-button {
@@ -50,6 +79,7 @@
             border: none;
             cursor: pointer;
             outline: none;
+            display: none;
         }
 
         .drawer {
@@ -146,12 +176,17 @@
 <body>
     <div class="drawer-container">
         <div class="folder-closed" onclick="openDrawer()">
-            <button class="open-button">Open Folder</button>
+            <div class="open-folder-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60">
+                    <path d="M10 0H70C80 0 80 10 80 10V50C80 60 70 60 70 60H10C0 60 0 50 0 50V10C0 0 10 0 10 0Z" fill="#ffe680"/>
+                </svg>
+                <div class="folder-tab"></div>
+            </div>
         </div>
         <div class="drawer">
             <div class="card" id="quoteCard">
                 <p class="quote-text" id="quoteText">"You are your best thing."</p>
-                <iframe id="quoteIframe" src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
+                <iframe id="quoteIframe" src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media" autoplay="true"></iframe>
                 <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
             </div>
         </div>
@@ -169,6 +204,7 @@
         function openDrawer() {
             document.querySelector('.folder-closed').style.display = 'none';
             document.querySelector('.drawer').style.display = 'block';
+            autoplay(); // Ensure autoplay is triggered once the drawer opens
         }
 
         function shuffleQuote() {
@@ -178,22 +214,23 @@
             // Update quote text and Spotify iframe
             document.getElementById('quoteText').innerText = randomQuote.text;
             document.getElementById('quoteIframe').src = `https://open.spotify.com/embed/track/${randomQuote.track}`;
+            
+            autoplay(); // Trigger autoplay when quote changes
         }
-    </script>
 
-    <script>
         function autoplay() {
             var t = setTimeout(function(){
                 var button = document.querySelector('[title="Play"]') || false;
                 if (button) {
-                    console.log('Click', button)
-                    button.click()
+                    console.log('Click', button);
+                    button.click();
                 }
-            }, 999)
+            }, 999);
         }
+
         document.addEventListener('DOMContentLoaded', (event) => {
-            autoplay()
-        })
+            autoplay(); // Auto-play the initial track when the page is loaded
+        });
     </script>
     
 </body>
