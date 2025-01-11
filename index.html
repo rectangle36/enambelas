@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note Containers</title>
+    <title>Birthday Wishes</title>
     <style>
         /* Apply gradient background */
         .gradient-background {
@@ -39,8 +39,8 @@
 
         .button {
             margin-top: 50px;
-            background: #93361d;
-            color: #ffffff;
+            background: #F2E3E5;
+            color: #ce7891;
             padding: 20px;
             border: none;
             font-size: 18px;
@@ -55,8 +55,8 @@
             font-size: 24px;
             font-weight: bold;
             margin: 20px;
-            color: white;
-            background-color: #091010;
+            color: #ce7891;
+            background-color: #F2E3E5;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -65,8 +65,8 @@
         }
 
         .shuffle-button {
-            background: #091010;
-            color: #ffffff;
+            background: #F2E3E5;
+            color: #ce7891;
             padding: 10px;
             border: none;
             font-size: 16px;
@@ -76,7 +76,7 @@
         }
 
         .shuffle-button:hover {
-            background: #3b4a7d;
+            background: #FFFFFF;
         }
 
         /* Fade-in animation */
@@ -97,99 +97,63 @@
         .birthday-header {
             font-size: 30px;
             font-weight: bold;
-            color: #ffdc00;
+            color: #f2e3e5;
             margin-bottom: 20px;
-        }
-
-        /* Hide note containers */
-        .hidden {
-            display: none;
-        }
-
-        /* Styles for the word container and images */
-        .word {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .char {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            margin: 0 5px;
-        }
-
-        .clear {
-            clear: both;
         }
     </style>
 </head>
 <body class="gradient-background">
+    <!-- Audio element to play music (initially paused) -->
+    <audio id="backgroundAudio" loop>
+        <source src="https://rectangle36.github.io/hehehe/Childish%20Gambino%20-%203005_[cut_20sec].mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
-    <!-- Note Container 2 (Visible at the start) -->
-    <div id="note_container2" class="word">
-        <img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char" style="transform: rotate(10deg);">
-        <img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char" style="transform: rotate(3deg);">
-        <img src="http://farm7.staticflickr.com/6162/6204057052_072c6851a0_t.jpg" class="char" style="transform: rotate(4deg);">
-        <img src="http://farm7.staticflickr.com/6132/5982183661_30be134733_t.jpg" class="char" style="transform: rotate(-10deg);">
-        <img src="http://farm8.staticflickr.com/7168/6596211537_41aff58351_t.jpg" class="char" style="transform: rotate(8deg);">
-        <img src="/assets/ransom_space.png" class="char" style="transform: rotate(0deg);">
-    </div>
+    <div class="quote-container">
+        <!-- The "Happy 16th Birthday" header -->
+        <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
+        
+        <!-- The folder button (Initially displayed) -->
+        <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
 
-    <!-- Quote container (hidden initially) -->
-    <div id="quote_container" class="quote-container hidden">
-        <div class="quote">Here's a great quote!</div>
-    </div>
-
-    <!-- Birthday Header -->
-    <div id="birthday_header" class="birthday-header">
-        <h1>Happy Birthday!</h1>
-    </div>
-
-    <!-- Quote Button -->
-    <button id="quote_button" class="button">Show Quote</button>
-
-    <!-- Shuffle Button (hidden initially) -->
-    <button id="shuffle_button" class="shuffle-button hidden">Shuffle Images</button>
-
-    <!-- Note Container 1 (hidden initially) -->
-    <div id="note_container" class="hidden">
-        <div class="word">
-            <img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" style="transform: rotate(2deg);">
-            <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="char" style="transform: rotate(-1deg);">
-            <img src="http://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" class="char" style="transform: rotate(2.5deg);">
-            <img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="char" style="transform: rotate(8deg);">
-            <img src="http://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" class="char" style="transform: rotate(6deg);">
-            <img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="char" style="transform: rotate(3deg);">
+        <!-- The quote and shuffle button (Initially hidden) -->
+        <div class="quote" id="quoteContainer">
+            <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
+            <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
         </div>
-        <br class="clear">
     </div>
 
     <script>
-        // Event listeners to toggle visibility
-        document.getElementById('quote_button').addEventListener('click', function() {
-            // Hide note container 2, quote button, and birthday header
-            document.getElementById('note_container2').style.display = 'none';
-            document.getElementById('quote_button').style.display = 'none';
-            document.getElementById('birthday_header').style.display = 'none';
+        // Play background audio when the quote is opened
+        function playAudio() {
+            const audio = document.getElementById('backgroundAudio');
+            audio.play(); // Start playing the audio
+        }
 
-            // Show quote container, note container 1, and shuffle button
-            document.getElementById('quote_container').classList.remove('hidden');
-            document.getElementById('note_container').style.display = 'block';
-            document.getElementById('shuffle_button').classList.remove('hidden');
+        // Birthday wish data
+        const birthdayWishes = [
+            '"Wishing you a day filled with happiness and a year filled with joy!"',
+            '"May your birthday be the start of a year filled with good luck, good health, and much happiness!"',
+            '"Happy Birthday! May your day be filled with laughter, love, and joy!"',
+            '"Here’s to another year of success, happiness, and unforgettable moments!"',
+            '"On your special day, may all your dreams come true. Wishing you the happiest birthday!"',
+            '"May your birthday be as wonderful and amazing as you are. Enjoy your day!"'
+        ];
 
-            // Add tilt effect to quote container after animation
-            setTimeout(function() {
-                document.getElementById('quote_container').classList.add('tilt');
-            }, 1000);
-        });
+        // Show the quote when button is clicked
+        function showQuote() {
+            document.getElementById('openButton').style.display = 'none'; // Hide the button
+            const quoteContainer = document.getElementById('quoteContainer');
+            quoteContainer.style.display = 'block'; // Show the quote
+            quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
+            playAudio(); // Play the audio when the quote is opened
+        }
 
-        // Event listener for shuffle button (you can add functionality here)
-        document.getElementById('shuffle_button').addEventListener('click', function() {
-            alert('Shuffle button clicked');
-        });
+        // Shuffle the quote when shuffle button is clicked
+        function shuffleQuote() {
+            const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
+            document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
+        }
     </script>
-
 </body>
 </html>
