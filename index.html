@@ -257,10 +257,15 @@
             playAudio(); // Play the audio when the quote is opened
         }
 
+	    let currentIndex = 0;
+
         // Shuffle the quote when shuffle button is clicked
         function shuffleQuote() {
-            const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
-            document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
+            // Set the quote text to the current index in the birthdayWishes array
+	    document.getElementById('quoteText').textContent = birthdayWishes[currentIndex];
+	
+	    // Increment the index and reset it to 0 if it exceeds the array length
+	    currentIndex = (currentIndex + 1) % birthdayWishes.length
         }
     </script>
 </body>
