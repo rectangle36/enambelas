@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Shuffle</title>
+    <title>Quote Display</title>
     <style>
         body {
             margin: 0;
@@ -17,194 +17,61 @@
             color: #ffffff; /* White text color */
         }
 
-        .drawer-container {
-            position: relative;
+        .quote-container {
             width: 100%;
             max-width: 400px;
             text-align: center;
         }
 
-        .folder-closed {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            background: #2a3b67; /* Darker blue for folder */
-            border: 2px solid #1c2a47; /* Darker border color */
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-
-        .folder-closed:hover {
-            transform: scale(1.05);
-        }
-
-        .open-folder-icon {
-            width: 100px;
-            height: 60px;
+        .button {
             background: #2a3b67;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .open-folder-icon svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .folder-tab {
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            width: 60px;
-            height: 20px;
-            background: #1c2a47; /* Dark blue for tab */
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            z-index: 2;
-        }
-
-        .open-button {
-            font-size: 18px;
-            font-weight: bold;
             color: #ffffff;
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            display: none;
-        }
-
-        .drawer {
-            display: none;
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            background: #2a3b67;
-            border: 2px solid #1c2a47;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            position: relative;
-            animation: slideIn3D 0.5s ease forwards;
-            transform-origin: top;
-            perspective: 1500px;
-        }
-
-        .card {
-            width: 100%;
-            height: 300px;
-            background: #1e2a47; /* Dark blue background */
-            margin: 20px 0;
-            border: 2px solid #fff;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: #ffffff;
-            position: relative;
-            transition: transform 0.3s ease, background 0.3s ease;
             padding: 20px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .card:hover {
-            transform: translateZ(10px);
-            background: #2a3b67; /* Slightly lighter blue on hover */
-        }
-
-        .quote-text {
-            font-size: 20px;
+        .quote {
+            display: none;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin: 20px;
+            color: white;
         }
 
         .shuffle-button {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1c2a47;
-            background: #ffffff; /* White button */
+            background: #1c2a47;
+            color: #ffffff;
+            padding: 10px;
             border: none;
+            font-size: 16px;
             cursor: pointer;
-            outline: none;
-            padding: 10px 20px;
             border-radius: 5px;
-            transition: background 0.3s;
+            margin-top: 10px;
         }
 
         .shuffle-button:hover {
-            background: #f4f4f4; /* Light gray button hover */
-        }
-
-        iframe {
-            margin-top: 20px;
-            width: 100%;
-            height: 152px;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            iframe {
-                height: 120px;
-            }
-        }
-
-        /* New 3D SlideIn animation */
-        @keyframes slideIn3D {
-            from {
-                transform: scale3d(0.7, 0.7, 1) rotateX(30deg);
-                opacity: 0;
-            }
-            to {
-                transform: scale3d(1, 1, 1) rotateX(0deg);
-                opacity: 1;
-            }
+            background: #3b4a7d;
         }
     </style>
 </head>
 <body>
-    <div class="drawer-container">
-        <div class="folder-closed" onclick="openDrawer()">
-            <div class="open-folder-icon">
-                <!-- Birthday Cake SVG Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="100" height="100">
-                    <g fill="#fff">
-                        <path d="M32 0C14.326 0 0 14.326 0 32s14.326 32 32 32 32-14.326 32-32S49.674 0 32 0zm0 58C16.192 58 6 47.808 6 32S16.192 6 32 6s26 10.192 26 26-10.192 26-26 26z"/>
-                        <path d="M26 36h12v6H26zM22 46h20v6H22zM18 56h28v6H18z"/>
-                        <circle cx="16" cy="12" r="2"/>
-                        <circle cx="24" cy="12" r="2"/>
-                        <circle cx="32" cy="12" r="2"/>
-                        <circle cx="40" cy="12" r="2"/>
-                        <circle cx="48" cy="12" r="2"/>
-                    </g>
-                </svg>
-            </div>
-        </div>
+    <div class="quote-container">
+        <!-- The folder button (Initially displayed) -->
+        <button class="button" id="openButton" onclick="showQuote()">Open Quote</button>
 
-        <!-- Drawer Content -->
-        <div class="drawer" id="quoteDrawer">
-            <div class="card">
-                <div class="quote-text" id="quoteText">"The only way to do great work is to love what you do." - Steve Jobs</div>
-                <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
-            </div>
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video"></iframe>
+        <!-- The quote and shuffle button (Initially hidden) -->
+        <div class="quote" id="quoteContainer">
+            <div id="quoteText">"The only way to do great work is to love what you do." - Steve Jobs</div>
+            <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
         </div>
     </div>
 
     <script>
-        // Quote Shuffle Functionality
+        // Quote data
         const quotes = [
             '"The only way to do great work is to love what you do." - Steve Jobs',
             '"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill',
@@ -214,15 +81,16 @@
             '"Life is what happens when you\'re busy making other plans." - John Lennon'
         ];
 
+        // Show the quote when button is clicked
+        function showQuote() {
+            document.getElementById('openButton').style.display = 'none'; // Hide the button
+            document.getElementById('quoteContainer').style.display = 'block'; // Show the quote
+        }
+
+        // Shuffle the quote when shuffle button is clicked
         function shuffleQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             document.getElementById('quoteText').textContent = quotes[randomIndex];
-        }
-
-        // Drawer functionality
-        function openDrawer() {
-            const drawer = document.getElementById('quoteDrawer');
-            drawer.style.display = 'block';
         }
     </script>
 </body>
