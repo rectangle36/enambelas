@@ -38,7 +38,8 @@
         }
 
         .button {
-            background: #2a3b67;
+            margin-top: 50px;
+            background: #93361d;
             color: #ffffff;
             padding: 20px;
             border: none;
@@ -55,7 +56,7 @@
             font-weight: bold;
             margin: 20px;
             color: white;
-            background-color: #2a3b67;
+            background-color: #091010;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -64,7 +65,7 @@
         }
 
         .shuffle-button {
-            background: #1c2a47;
+            background: #091010;
             color: #ffffff;
             padding: 10px;
             border: none;
@@ -109,11 +110,11 @@
     </audio>
 
     <div class="quote-container">
-        <!-- The folder button (Initially displayed) -->
-        <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
-
         <!-- The "Happy 16th Birthday" header -->
         <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
+        
+        <!-- The folder button (Initially displayed) -->
+        <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
 
         <!-- The quote and shuffle button (Initially hidden) -->
         <div class="quote" id="quoteContainer">
@@ -123,7 +124,7 @@
     </div>
 
     <script>
-        // Play background audio as soon as the site loads
+        // Play background audio when the quote is opened
         function playAudio() {
             const audio = document.getElementById('backgroundAudio');
             audio.play(); // Start playing the audio
@@ -145,6 +146,7 @@
             const quoteContainer = document.getElementById('quoteContainer');
             quoteContainer.style.display = 'block'; // Show the quote
             quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
+            playAudio(); // Play the audio when the quote is opened
         }
 
         // Shuffle the quote when shuffle button is clicked
@@ -152,11 +154,6 @@
             const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
             document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
         }
-
-        // Automatically play audio when the page loads
-        document.addEventListener('DOMContentLoaded', (event) => {
-            playAudio(); // Play the audio as soon as the page loads
-        });
     </script>
 </body>
 </html>
