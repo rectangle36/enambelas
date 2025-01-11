@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Display</title>
+    <title>Birthday Wishes</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #1e2a47; /* Dark blue background */
+        /* Apply gradient background */
+        .gradient-background {
+            background: linear-gradient(108deg, #93361d, #f3b386, #091010, #ce7891);
+            background-size: 240% 240%;
+            animation: gradient-animation 28s ease infinite;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            color: #ffffff; /* White text color */
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Keyframes for gradient animation */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .quote-container {
@@ -78,9 +92,16 @@
         audio {
             display: none;
         }
+
+        .birthday-header {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ffdc00;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
-<body>
+<body class="gradient-background">
     <!-- Audio element to play music (initially paused) -->
     <audio id="backgroundAudio" loop>
         <source src="https://rectangle36.github.io/hehehe/Childish%20Gambino%20-%203005_[cut_20sec].mp3" type="audio/mp3">
@@ -89,37 +110,37 @@
 
     <div class="quote-container">
         <!-- The folder button (Initially displayed) -->
-        <button class="button" id="openButton" onclick="showQuote()">Open Quote</button>
+        <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
+
+        <!-- The "Happy 16th Birthday" header -->
+        <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
 
         <!-- The quote and shuffle button (Initially hidden) -->
         <div class="quote" id="quoteContainer">
-            <div id="quoteText">"The only way to do great work is to love what you do." - Steve Jobs</div>
+            <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
             <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
         </div>
     </div>
 
     <script>
-        // Play background audio when button is clicked
+        // Play background audio as soon as the site loads
         function playAudio() {
             const audio = document.getElementById('backgroundAudio');
             audio.play(); // Start playing the audio
         }
 
-        // Quote data
-        const quotes = [
-            '"The only way to do great work is to love what you do." - Steve Jobs',
-            '"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill',
-            '"It does not matter how slowly you go as long as you do not stop." - Confucius',
-            '"Believe you can and you\'re halfway there." - Theodore Roosevelt',
-            '"The best way to predict the future is to create it." - Abraham Lincoln',
-            '"Life is what happens when you\'re busy making other plans." - John Lennon'
+        // Birthday wish data
+        const birthdayWishes = [
+            '"Wishing you a day filled with happiness and a year filled with joy!"',
+            '"May your birthday be the start of a year filled with good luck, good health, and much happiness!"',
+            '"Happy Birthday! May your day be filled with laughter, love, and joy!"',
+            '"Here’s to another year of success, happiness, and unforgettable moments!"',
+            '"On your special day, may all your dreams come true. Wishing you the happiest birthday!"',
+            '"May your birthday be as wonderful and amazing as you are. Enjoy your day!"'
         ];
 
         // Show the quote when button is clicked
         function showQuote() {
-            // Play the background music once the button is clicked
-            playAudio();
-
             document.getElementById('openButton').style.display = 'none'; // Hide the button
             const quoteContainer = document.getElementById('quoteContainer');
             quoteContainer.style.display = 'block'; // Show the quote
@@ -128,9 +149,14 @@
 
         // Shuffle the quote when shuffle button is clicked
         function shuffleQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            document.getElementById('quoteText').textContent = quotes[randomIndex];
+            const randomIndex = Math.floor(Math.random() * birthdayWishes.length);
+            document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
         }
+
+        // Automatically play audio when the page loads
+        document.addEventListener('DOMContentLoaded', (event) => {
+            playAudio(); // Play the audio as soon as the page loads
+        });
     </script>
 </body>
 </html>
