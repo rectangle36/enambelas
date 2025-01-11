@@ -61,7 +61,33 @@
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             opacity: 0;
-            animation: fadeIn 1s forwards; /* Fade-in animation */
+            animation: fadeIn 1s forwards, tiltEffect 0.5s 1s forwards; /* Added tilt effect */
+        }
+
+        /* New animation for scaling in */
+        @keyframes scale-in-ver-center {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Tilt effect after scaling */
+        @keyframes tiltEffect {
+            0% {
+                transform: rotate(0deg); /* Initial position */
+            }
+            100% {
+                transform: rotate(5deg); /* Tilt by 5 degrees */
+            }
+        }
+
+        .scale-in-ver-center {
+            animation: scale-in-ver-center 1s cubic-bezier(0.075, 0.820, 0.165, 1.000) both;
         }
 
         .shuffle-button {
@@ -77,16 +103,6 @@
 
         .shuffle-button:hover {
             background: #3b4a7d;
-        }
-
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         /* Hide audio controls */
@@ -114,8 +130,8 @@
         Your browser does not support the audio element.
     </audio>
 
+    <!-- Note container 2 with images -->
     <div id="note_container2">
-        <!-- Note container 2 content here (images and other elements) -->
         <div class="word">
             <img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char" style="transform: rotate(10deg);">
             <img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char" style="transform: rotate(3deg);">
@@ -124,14 +140,12 @@
         </div>
     </div>
 
+    <!-- Note container 1 with quote and button -->
     <div id="note_container1" class="hidden">
-        <!-- Note container 1 content here -->
         <div class="quote-container">
             <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
-
             <button class="button" id="openButton" onclick="showQuote()">Open Birthday Wish</button>
-
-            <div class="quote" id="quoteContainer">
+            <div class="quote scale-in-ver-center" id="quoteContainer">
                 <div id="quoteText">"Wishing you a day filled with happiness and a year filled with joy!"</div>
                 <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
             </div>
@@ -159,10 +173,9 @@
         function showQuote() {
             document.getElementById('openButton').style.display = 'none'; // Hide the button
             document.getElementById('note_container2').classList.add('hidden'); // Hide note container 2
-            document.getElementById('note_container1').classList.add('hidden'); // Hide note container 1
+            document.getElementById('note_container1').classList.remove('hidden'); // Show note container 1 (quote)
             const quoteContainer = document.getElementById('quoteContainer');
             quoteContainer.style.display = 'block'; // Show the quote
-            quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
             playAudio(); // Play the audio when the quote is opened
         }
 
@@ -172,9 +185,10 @@
             document.getElementById('quoteText').textContent = birthdayWishes[randomIndex];
         }
 
-        // On page load, show note container 2
+        // On page load, show note container 2 and hide note container 1
         window.onload = function() {
-            document.getElementById('note_container2').style.display = 'block';
+            document.getElementById('note_container2').style.display = 'block'; // Show note container 2
+            document.getElementById('note_container1').style.display = 'none'; // Ensure note container 1 is hidden
         };
     </script>
 </body>
