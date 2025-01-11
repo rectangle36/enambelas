@@ -186,7 +186,7 @@
         <!-- The folder button (Initially displayed) -->
         <button class="button" id="openButton" onclick="showQuote()">Birthday Wishes</button>
 
-	<img id="frank" src="https://www.vibe.com/wp-content/uploads/2017/06/tyler-frank-ocean-1498844140.jpg?w=500">
+	<img id="frank" style="display: none; width: 500px;" src="https://www.vibe.com/wp-content/uploads/2017/06/tyler-frank-ocean-1498844140.jpg?">
 
         <div id="note_container" style="display: none;">
                 <div class="word">
@@ -228,7 +228,8 @@
         function showQuote() {
             document.getElementById('note_container2').style.display = 'none';
             document.getElementById('openButton').style.display = 'none';
-            document.getElementById('note_container').style.display = 'block'// Hide the button
+            document.getElementById('note_container').style.display = 'block'
+		document.getElementById('frank').style.display = 'block'// Hide the button
             const quoteContainer = document.getElementById('quoteContainer');
             quoteContainer.style.display = 'block'; // Show the quote
             quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
