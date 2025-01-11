@@ -102,6 +102,9 @@
             cursor: pointer;
             outline: none;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close:hover {
@@ -133,25 +136,22 @@
     <div class="drawer">
         <div class="folders">
             <div class="folder" onclick="openFolder(this)">
-                <span>Quote 1</span>
                 <div class="folder-content">
-                    <button class="close" onclick="closeFolder(this)">×</button>
+                    <button class="close" onclick="closeFolder(event, this)">×</button>
                     <p>"You are your best thing."</p>
                     <iframe src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
                 </div>
             </div>
             <div class="folder" onclick="openFolder(this)">
-                <span>Quote 2</span>
                 <div class="folder-content">
-                    <button class="close" onclick="closeFolder(this)">×</button>
+                    <button class="close" onclick="closeFolder(event, this)">×</button>
                     <p>"Keep a green tree in your heart and perhaps a singing bird will come."</p>
                     <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" allow="encrypted-media"></iframe>
                 </div>
             </div>
             <div class="folder" onclick="openFolder(this)">
-                <span>Quote 3</span>
                 <div class="folder-content">
-                    <button class="close" onclick="closeFolder(this)">×</button>
+                    <button class="close" onclick="closeFolder(event, this)">×</button>
                     <p>"The sun will rise, and we will try again."</p>
                     <iframe src="https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3" allow="encrypted-media"></iframe>
                 </div>
@@ -164,8 +164,9 @@
             folder.classList.add('open');
         }
 
-        function closeFolder(button) {
-            const folder = button.parentElement.parentElement;
+        function closeFolder(event, button) {
+            event.stopPropagation(); // Prevent the parent click event from firing
+            const folder = button.closest('.folder');
             folder.classList.remove('open');
         }
     </script>
