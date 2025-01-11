@@ -8,12 +8,13 @@
         body {
             margin: 0;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #1e2a47; /* Dark blue background */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            color: #ffffff; /* White text color */
         }
 
         .drawer-container {
@@ -27,8 +28,8 @@
             width: 100%;
             max-width: 400px;
             height: 250px;
-            background: #ffe680;
-            border: 2px solid #d4b600;
+            background: #2a3b67; /* Darker blue for folder */
+            border: 2px solid #1c2a47; /* Darker border color */
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             display: flex;
@@ -46,7 +47,7 @@
         .open-folder-icon {
             width: 100px;
             height: 60px;
-            background: #ffe680;
+            background: #2a3b67;
             position: relative;
             cursor: pointer;
         }
@@ -65,7 +66,7 @@
             left: 20px;
             width: 60px;
             height: 20px;
-            background: #d4b600;
+            background: #1c2a47; /* Dark blue for tab */
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
             z-index: 2;
@@ -74,7 +75,7 @@
         .open-button {
             font-size: 18px;
             font-weight: bold;
-            color: #444;
+            color: #ffffff;
             background: none;
             border: none;
             cursor: pointer;
@@ -87,8 +88,8 @@
             width: 100%;
             max-width: 400px;
             height: auto;
-            background: #ffe680;
-            border: 2px solid #d4b600;
+            background: #2a3b67;
+            border: 2px solid #1c2a47;
             border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             overflow: hidden;
@@ -101,9 +102,9 @@
         .card {
             width: 100%;
             height: 300px;
-            background: #f2f2f2;  /* Initial color */
+            background: #1e2a47; /* Dark blue background */
             margin: 20px 0;
-            border: 2px solid #bbb;
+            border: 2px solid #fff;
             border-radius: 6px;
             display: flex;
             flex-direction: column;
@@ -111,19 +112,15 @@
             justify-content: center;
             font-size: 16px;
             font-weight: 600;
-            color: #444;
+            color: #ffffff;
             position: relative;
             transition: transform 0.3s ease, background 0.3s ease;
             padding: 20px;
         }
 
-        .card.initial-load {
-            background: #ffec99;  /* Change color during initial load */
-        }
-
         .card:hover {
             transform: translateZ(10px);
-            background: #ffec99;
+            background: #2a3b67; /* Slightly lighter blue on hover */
         }
 
         .quote-text {
@@ -135,8 +132,8 @@
         .shuffle-button {
             font-size: 18px;
             font-weight: bold;
-            color: #444;
-            background: #d4b600;
+            color: #1c2a47;
+            background: #ffffff; /* White button */
             border: none;
             cursor: pointer;
             outline: none;
@@ -146,7 +143,7 @@
         }
 
         .shuffle-button:hover {
-            background: #c7a400;
+            background: #f4f4f4; /* Light gray button hover */
         }
 
         iframe {
@@ -181,47 +178,51 @@
     <div class="drawer-container">
         <div class="folder-closed" onclick="openDrawer()">
             <div class="open-folder-icon">
-                <!-- Replaced the folder shape with your SVG -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path opacity="0.5" d="M12 20.0283V18H8L8 20.0283C8 20.3054 8 20.444 8.09485 20.5C8.18971 20.556 8.31943 20.494 8.57888 20.3701L9.82112 19.7766C9.9089 19.7347 9.95279 19.7138 10 19.7138C10.0472 19.7138 10.0911 19.7347 10.1789 19.7767L11.4211 20.3701C11.6806 20.494 11.8103 20.556 11.9051 20.5C12 20.444 12 20.3054 12 20.0283Z" fill="#1C274D"></path>
-                        <path d="M8 18H7.42598C6.34236 18 5.96352 18.0057 5.67321 18.0681C5.15982 18.1785 4.71351 18.4151 4.38811 18.7347C4.27837 18.8425 4.22351 18.8964 4.09696 19.2397C3.97041 19.5831 3.99045 19.7288 4.03053 20.02C4.03761 20.0714 4.04522 20.1216 4.05343 20.1706C4.16271 20.8228 4.36259 21.1682 4.66916 21.4142C4.97573 21.6602 5.40616 21.8206 6.21896 21.9083C7.05566 21.9986 8.1646 22 9.75461 22H14.1854C15.7754 22 16.8844 21.9986 17.7211 21.9083C18.5339 21.8206 18.9643 21.6602 19.2709 21.4142C19.5774 21.1682 19.7773 20.8228 19.8866 20.1706C19.9784 19.6228 19.9965 18.9296 20 18H12V20.0283C12 20.3054 12 20.444 11.9051 20.5C11.8103 20.556 11.6806 20.494 11.4211 20.3701L10.1789 19.7767C10.0911 19.7347 10.0472 19.7138 10 19.7138C9.95279 19.7138 9.9089 19.7347 9.82112 19.7766L8.57888 20.3701C8.31943 20.494 8.18971 20.556 8.09485 20.5C8 20.444 8 20.3054 8 20.0283V18Z" fill="#1C274D"></path>
-                        <path opacity="0.5" d="M4.72718 2.73332C5.03258 2.42535 5.46135 2.22456 6.27103 2.11478C7.10452 2.00177 8.2092 2 9.7931 2H14.2069C15.7908 2 16.8955 2.00177 17.729 2.11478C18.5387 2.22456 18.9674 2.42535 19.2728 2.73332C19.5782 3.0413 19.7773 3.47368 19.8862 4.2902C19.9982 5.13073 20 6.24474 20 7.84202L20 18H7.42598C6.34236 18 5.96352 18.0057 5.67321 18.0681C5.15982 18.1785 4.71351 18.4151 4.38811 18.7347C4.27837 18.8425 4.22351 18.8964 4.09696 19.2397C4.02435 19.4367 4 19.5687 4 19.7003V7.84202C4 6.24474 4.00176 5.13073 4.11382 4.2902C4.22268 3.47368 4.42179 3.0413 4.72718 2.73332Z" fill="#1C274D"></path>
-                        <path d="M7.25 7C7.25 6.58579 7.58579 6.25 8 6.25H16C16.4142 6.25 16.75 6.58579 16.75 7C16.75 7.41421 16.4142 7.75 16 7.75H8C7.58579 7.75 7.25 7.41421 7.25 7Z" fill="#1C274D"></path>
-                        <path d="M8 9.75C7.58579 9.75 7.25 10.0858 7.25 10.5C7.25 10.9142 7.58579 11.25 8 11.25H13C13.4142 11.25 13.75 10.9142 13.75 10.5C13.75 10.0858 13.4142 9.75 13 9.75H8Z" fill="#1C274D"></path>
+                <!-- Birthday Cake SVG Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="100" height="100">
+                    <g fill="#fff">
+                        <path d="M32 0C14.326 0 0 14.326 0 32s14.326 32 32 32 32-14.326 32-32S49.674 0 32 0zm0 58C16.192 58 6 47.808 6 32S16.192 6 32 6s26 10.192 26 26-10.192 26-26 26z"/>
+                        <path d="M26 36h12v6H26zM22 46h20v6H22zM18 56h28v6H18z"/>
+                        <circle cx="16" cy="12" r="2"/>
+                        <circle cx="24" cy="12" r="2"/>
+                        <circle cx="32" cy="12" r="2"/>
+                        <circle cx="40" cy="12" r="2"/>
+                        <circle cx="48" cy="12" r="2"/>
                     </g>
                 </svg>
             </div>
         </div>
-        <div class="drawer">
-            <div class="card initial-load">
-                <p class="quote-text">"Believe you can and you're halfway there."</p>
-                <p>- Theodore Roosevelt</p>
+
+        <!-- Drawer Content -->
+        <div class="drawer" id="quoteDrawer">
+            <div class="card">
+                <div class="quote-text" id="quoteText">"The only way to do great work is to love what you do." - Steve Jobs</div>
+                <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
             </div>
-            <div class="card initial-load">
-                <p class="quote-text">"Success is not final, failure is not fatal: It is the courage to continue that counts."</p>
-                <p>- Winston Churchill</p>
-            </div>
-            <button class="shuffle-button" onclick="shuffleQuotes()">Shuffle Quotes</button>
             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video"></iframe>
         </div>
     </div>
 
     <script>
-        window.addEventListener('load', () => {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => card.classList.remove('initial-load'));
-        });
+        // Quote Shuffle Functionality
+        const quotes = [
+            '"The only way to do great work is to love what you do." - Steve Jobs',
+            '"Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill',
+            '"It does not matter how slowly you go as long as you do not stop." - Confucius',
+            '"Believe you can and you\'re halfway there." - Theodore Roosevelt',
+            '"The best way to predict the future is to create it." - Abraham Lincoln',
+            '"Life is what happens when you\'re busy making other plans." - John Lennon'
+        ];
 
-        function openDrawer() {
-            document.querySelector('.drawer').style.display = 'block';
-            document.querySelector('.folder-closed').style.display = 'none';
+        function shuffleQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quoteText').textContent = quotes[randomIndex];
         }
 
-        function shuffleQuotes() {
-            // Logic for shuffling quotes (to be added)
+        // Drawer functionality
+        function openDrawer() {
+            const drawer = document.getElementById('quoteDrawer');
+            drawer.style.display = 'block';
         }
     </script>
 </body>
