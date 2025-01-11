@@ -13,66 +13,56 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            perspective: 1000px;
             overflow: hidden;
         }
 
         .drawer {
-            width: 450px;
-            height: 650px;
-            background: #dcd4c8;
-            border: 2px solid #bbb;
-            border-radius: 12px;
+            width: 600px;
+            height: 400px;
+            background: #ffe680;
+            border: 2px solid #d4b600;
+            border-radius: 10px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(0deg);
             position: relative;
         }
 
         .folders {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 20px 0;
-            overflow: hidden;
+            top: 20px;
+            left: 20px;
+            width: 560px;
+            height: 360px;
+            overflow-y: auto;
+            transform-style: preserve-3d;
+            transform: translateZ(-50px);
         }
 
         .folder {
-            width: 90%;
-            height: 90px;
-            background: #ffe680;
-            margin: 12px 0;
-            border: 2px solid #d4b600;
-            border-radius: 6px 6px 0 0;
+            width: 520px;
+            height: 80px;
+            background: #fff;
+            margin: 12px auto;
+            border: 2px solid #bbb;
+            border-radius: 6px;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             font-size: 18px;
             font-weight: 600;
             color: #444;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .folder:before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 10px;
-            width: 30%;
-            height: 10px;
-            background: #ffe680;
-            border: 2px solid #d4b600;
-            border-bottom: none;
-            border-radius: 6px 6px 0 0;
+            transform: rotateX(0deg) translateZ(0);
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .folder:hover {
-            transform: scale(1.05);
+            transform: translateZ(20px);
             background: #ffec99;
         }
 
@@ -82,7 +72,7 @@
             height: 85%;
             top: 7%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateZ(50px);
             background: #fdfdfd;
             z-index: 10;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
