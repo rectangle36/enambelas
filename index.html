@@ -50,7 +50,7 @@
         }
 
         /* Quote block styles */
-        .note_container {
+        #note_container {
             display: none;
         }
         
@@ -179,9 +179,9 @@
         // Show the quote when button is clicked
         function showQuote() {
             document.getElementById('note_container2').style.display = 'none';
-            document.getElementById('openButton').style.display = 'none'; // Hide the button
+            document.getElementById('openButton').style.display = 'none';
+            document.getElementById('note_container1').style.display = 'block'// Hide the button
             const quoteContainer = document.getElementById('quoteContainer');
-            noteContainer.style.display = 'block';
             quoteContainer.style.display = 'block'; // Show the quote
             quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
             playAudio(); // Play the audio when the quote is opened
