@@ -49,9 +49,13 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .char2 {
-            animation: vibrate-1 0.3s linear infinite both;
+        .char {
+            	animation: vibrate-1 0.3s linear infinite both;
         }
+
+	.chars {
+		animation: vibrate-2 0.3s linear infinite alternate-reverse both;
+	}
 
         /* Quote block styles */        
         .quote {
@@ -114,7 +118,26 @@
 	  }
 	}
 
-
+	@keyframes vibrate-2 {
+	  0% {
+	    transform: translate(0);
+	  }
+	  20% {
+	    transform: translate(-2px, 2px);
+	  }
+	  40% {
+	    transform: translate(-2px, -2px);
+	  }
+	  60% {
+	    transform: translate(2px, 2px);
+	  }
+	  80% {
+	    transform: translate(2px, -2px);
+	  }
+	  100% {
+	    transform: translate(0);
+	  }
+	}
 
         /* Hide audio controls */
         audio {
@@ -166,11 +189,11 @@
         <div id="note_container" style="display: none;">
                 <div class="word">
                     <img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
-                    <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
+                    <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="chars" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
                     <img src="http://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(2.5deg);">
-                    <img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
+                    <img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="chars" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
                     <img src="http://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(6deg);">
-                    <img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="char" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
+                    <img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="chars" style="width: 50px; height: 50px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
                 </div>
                 <br class="clear">
             </div>
