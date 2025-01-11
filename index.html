@@ -1,143 +1,230 @@
-body {
-    margin: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Drawer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-.drawer-container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
+        .drawer-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
 
-.folder-closed {
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    background: #ffe680;
-    border: 2px solid #d4b600;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
+        .folder-closed {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background: #ffe680;
+            border: 2px solid #d4b600;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-.folder-closed:hover {
-    transform: scale(1.05);
-}
+        .folder-closed:hover {
+            transform: scale(1.05);
+        }
 
-.open-button {
-    font-size: 18px;
-    font-weight: bold;
-    color: #444;
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
+        .open-button {
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
 
-.drawer {
-    display: none;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    background: #ffe680;
-    border: 2px solid #d4b600;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    position: relative;
-    animation: slideIn3D 0.5s ease forwards;
-    transform-origin: top;
-    perspective: 1500px; /* Add perspective for 3D effect */
-}
+        .drawer {
+            display: none;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            background: #ffe680;
+            border: 2px solid #d4b600;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            animation: slideIn3D 0.5s ease forwards;
+            transform-origin: top;
+            perspective: 1500px; /* Add perspective for 3D effect */
+        }
 
-.folders {
-    padding: 10px;
-    overflow-y: auto;
-    max-height: 300px;
-}
+        .folders {
+            padding: 10px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
 
-.folder {
-    width: 100%;
-    height: 80px;
-    background: #fff;
-    margin: 12px 0;
-    border: 2px solid #bbb;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 600;
-    color: #444;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
+        .folder {
+            width: 100%;
+            height: 80px;
+            background: #fff;
+            margin: 12px 0;
+            border: 2px solid #bbb;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
 
-.folder:hover {
-    transform: translateZ(10px);
-    background: #ffec99;
-}
+        .folder:hover {
+            transform: translateZ(10px);
+            background: #ffec99;
+        }
 
-.folder.open {
-    position: absolute;
-    width: 95%;
-    height: 85%;
-    top: 7%;
-    left: 50%;
-    transform: translateX(-50%) translateZ(50px);
-    background: #fdfdfd;
-    z-index: 10;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    cursor: default;
-    border-radius: 10px;
-    animation: slideIn3D 0.5s ease forwards;
-}
+        .folder.open {
+            position: absolute;
+            width: 95%;
+            height: 85%;
+            top: 7%;
+            left: 50%;
+            transform: translateX(-50%) translateZ(50px);
+            background: #fdfdfd;
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            cursor: default;
+            border-radius: 10px;
+            animation: slideIn3D 0.5s ease forwards;
+        }
 
-.folder-content {
-    display: none;
-    padding: 20px;
-    text-align: center;
-}
+        .folder-content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
 
-.folder.open .folder-content {
-    display: block;
-}
+        .folder.open .folder-content {
+            display: block;
+        }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff5757;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    cursor: pointer;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.close:hover {
-    background: #e04646;
-}
+        .close:hover {
+            background: #e04646;
+        }
 
-/* New 3D SlideIn animation */
-@keyframes slideIn3D {
+        /* New 3D SlideIn animation */
+        @keyframes slideIn3D {
+            from {
+                transform: scale3d(0.7, 0.7, 1) rotateX(30deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale3d(1, 1, 1) rotateX(0deg);
+                opacity: 1;
+            }
+        }
+
+        iframe {
+            margin-top: 20px;
+            width: 100%;
+            height: 80px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .folder {
+                height: 60px;
+            }
+            iframe {
+                height: 60px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="drawer-container">
+        <div class="folder-closed" onclick="openDrawer()">
+            <button class="open-button">Open Folder</button>
+        </div>
+        <div class="drawer">
+            <div class="folders">
+                <div class="folder" onclick="openFolder(this)">
+                    <div class="folder-content">
+                        <button class="close" onclick="closeFolder(event, this)">×</button>
+                        <p>"You are your best thing."</p>
+                        <iframe src="https://open.spotify.com/embed/track/1Xyo4u8uXC1ZmMpatF05PJ" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+                <div class="folder" onclick="openFolder(this)">
+                    <div class="folder-content">
+                        <button class="close" onclick="closeFolder(event, this)">×</button>
+                        <p>"Keep a green tree in your heart and perhaps a singing bird will come."</p>
+                        <iframe src="https://open.spotify.com/embed/track/3n3Ppam7vgaVa1iaRUc9Lp" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+                <div class="folder" onclick="openFolder(this)">
+                    <div class="folder-content">
+                        <button class="close" onclick="closeFolder(event, this)">×</button>
+                        <p>"The sun will rise, and we will try again."</p>
+                        <iframe src="https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openDrawer() {
+            document.querySelector('.folder-closed').style.display = 'none';
+            document.querySelector('.drawer').style.display = 'block';
+        }
+
+        function openFolder(folder) {
+            folder.classList.add('open');
+        }
+
+        function closeFolder(event, button) {
+            event.stopPropagation(); // Prevent the parent click event from firing
+            const folder = button.closest('.folder');
+            folder.classList.remove('open');
+        }
+    </script>
+</body>
+</html>
