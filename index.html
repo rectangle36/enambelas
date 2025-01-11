@@ -34,12 +34,19 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* Quote block styles */
         .quote {
             display: none;
             font-size: 24px;
             font-weight: bold;
             margin: 20px;
             color: white;
+            background-color: #2a3b67;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s forwards; /* Fade-in animation */
         }
 
         .shuffle-button {
@@ -56,9 +63,30 @@
         .shuffle-button:hover {
             background: #3b4a7d;
         }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hide audio controls */
+        audio {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Audio element to play music in the background -->
+    <audio autoplay loop>
+        <source src="./Childish Gambino - 3005_[cut_20sec].mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <div class="quote-container">
         <!-- The folder button (Initially displayed) -->
         <button class="button" id="openButton" onclick="showQuote()">Open Quote</button>
@@ -84,7 +112,9 @@
         // Show the quote when button is clicked
         function showQuote() {
             document.getElementById('openButton').style.display = 'none'; // Hide the button
-            document.getElementById('quoteContainer').style.display = 'block'; // Show the quote
+            const quoteContainer = document.getElementById('quoteContainer');
+            quoteContainer.style.display = 'block'; // Show the quote
+            quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
         }
 
         // Shuffle the quote when shuffle button is clicked
