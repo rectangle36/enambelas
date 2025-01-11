@@ -39,8 +39,8 @@
 
         .button {
             margin-top: 50px;
-            background: #F2E3E5;
-            color: #CE7891;
+            background: #FFFFFF; /* White background for button */
+            color: #091010; /* Dark text color */
             padding: 20px;
             border: none;
             font-size: 18px;
@@ -55,8 +55,8 @@
             font-size: 24px;
             font-weight: bold;
             margin: 20px;
-            color: #CE7891;
-            background-color: #F2E3E5;
+            color: #091010; /* Dark text color */
+            background-color: #FFFFFF; /* White background for quote */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -65,8 +65,8 @@
         }
 
         .shuffle-button {
-            background: #F2E3E5;
-            color: #ce7891;
+            background: #091010;
+            color: white;
             padding: 10px;
             border: none;
             font-size: 16px;
@@ -76,7 +76,7 @@
         }
 
         .shuffle-button:hover {
-            background: #FFFFFF;
+            background: #3b4a7d;
         }
 
         /* Fade-in animation */
@@ -97,8 +97,25 @@
         .birthday-header {
             font-size: 30px;
             font-weight: bold;
-            color: #f2E3E5;
+            color: #ffdc00;
             margin-bottom: 20px;
+        }
+
+        /* New style for image container */
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 400px; /* Same width as the birthday header text */
+            margin: 20px auto;
+        }
+
+        .image-container img {
+            width: 50px; /* Make each image a square */
+            height: 50px;
+            object-fit: cover; /* Stretch the image to fill the square */
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -110,6 +127,16 @@
     </audio>
 
     <div class="quote-container">
+        <!-- Image container for the birthday wish letters -->
+        <div class="image-container">
+            <img src="https://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" alt="Image 1">
+            <img src="https://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" alt="Image 2">
+            <img src="https://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" alt="Image 3">
+            <img src="https://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" alt="Image 4">
+            <img src="https://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" alt="Image 5">
+            <img src="https://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" alt="Image 6">
+        </div>
+        
         <!-- The "Happy 16th Birthday" header -->
         <div class="birthday-header" id="birthdayHeader">Happy 16th Birthday!</div>
         
