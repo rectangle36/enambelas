@@ -81,9 +81,9 @@
     </style>
 </head>
 <body>
-    <!-- Audio element to play music in the background -->
-    <audio autoplay loop>
-        <source src="./Childish Gambino - 3005_[cut_20sec].mp3" type="audio/mp3">
+    <!-- Audio element to play music (initially paused) -->
+    <audio id="backgroundAudio" loop>
+        <source src="https://rectangle36.github.io/hehehe/Childish%20Gambino%20-%203005_[cut_20sec].mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
@@ -99,6 +99,12 @@
     </div>
 
     <script>
+        // Play background audio when button is clicked
+        function playAudio() {
+            const audio = document.getElementById('backgroundAudio');
+            audio.play(); // Start playing the audio
+        }
+
         // Quote data
         const quotes = [
             '"The only way to do great work is to love what you do." - Steve Jobs',
@@ -111,6 +117,9 @@
 
         // Show the quote when button is clicked
         function showQuote() {
+            // Play the background music once the button is clicked
+            playAudio();
+
             document.getElementById('openButton').style.display = 'none'; // Hide the button
             const quoteContainer = document.getElementById('quoteContainer');
             quoteContainer.style.display = 'block'; // Show the quote
