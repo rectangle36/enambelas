@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Wishes</title>
+	<script src="https://kit.fontawesome.com/b25c46b9fd.js" crossorigin="anonymous"></script>
     <style>
         /* Apply gradient background */
         .gradient-background {
-            background: linear-gradient(108deg, #93361d, #f3b386, #ce7891);
+            background: linear-gradient(108deg, #2E5077, #213555);
             background-size: 240% 240%;
             animation: gradient-animation 28s ease infinite;
-            height: 100vh;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,15 +33,19 @@
         }
 
         .quote-container {
-            width: 100%;
+			height: 100%;
             max-width: 400px;
             text-align: center;
         }
 
+		#displayThis {
+			margin-top: 200px;
+			height: fit-content;
+		}
+
         .button {
-            margin-top: 50px;
-            background: #F2E3E5;
-            color: #ce7891;
+            background: #a6c8d5;
+            color: #2E5077;
             padding: 20px;
             border: none;
             font-size: 18px;
@@ -50,53 +55,53 @@
         }
 
         .char {
-            	animation: vibrate-1 0.3s linear infinite both;
+            animation: vibrate-1 0.3s linear infinite both;
         }
 
-	#s {
-		animation: vibrate-s 0.3s linear infinite alternate-reverse both;
-		display: inline-block;
-		transform-origin: center;
-	}
+		#s {
+			animation: vibrate-s 0.3s linear infinite alternate-reverse both;
+			display: inline-block;
+			transform-origin: center;
+		}
 
-	#h {
-		animation: vibrate-h 0.3s linear infinite alternate-reverse both;
-		display: inline-block;
-		transform-origin: center;
-	}
+		#h {
+			animation: vibrate-h 0.3s linear infinite alternate-reverse both;
+			display: inline-block;
+			transform-origin: center;
+		}
 
-	#e {
-		animation: vibrate-e 0.3s linear infinite alternate-reverse both;
-		display: inline-block;
-		transform-origin: center;
-	}
+		#e {
+			animation: vibrate-e 0.3s linear infinite alternate-reverse both;
+			display: inline-block;
+			transform-origin: center;
+		}
 
-	#n {
-		animation: vibrate-n 0.3s linear infinite alternate-reverse both;
-		display: inline-block;
-		transform-origin: center;
-	}
+		#n {
+			animation: vibrate-n 0.3s linear infinite alternate-reverse both;
+			display: inline-block;
+			transform-origin: center;
+		}
 
-	#x {
-		animation: vibrate-x 0.3s linear infinite alternate-reverse both;
-		display: inline-block;
-		transform-origin: center;
-	}
+		#x {
+			animation: vibrate-x 0.3s linear infinite alternate-reverse both;
+			display: inline-block;
+			transform-origin: center;
+		}
 
-	#y {
-		animation: vibrate-y 0.3s linear infinite alternate-reverse both;
-		display: inline-block;
-		transform-origin: center;
-	}
+		#y {
+			animation: vibrate-y 0.3s linear infinite alternate-reverse both;
+			display: inline-block;
+			transform-origin: center;
+		}
 
         /* Quote block styles */        
         .quote {
-            display: none;
+            display: block;
             font-size: 24px;
             font-weight: bold;
             margin: 20px;
-            color: #ce7891;
-            background-color: #F2E3E5;
+            color: #2E5077;
+            background-color: #a6c8d5;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -105,14 +110,15 @@
         }
 
         .shuffle-button {
-            background: #ce7891;
-            color: #F2E3E5;
-            padding: 10px;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
+			margin-top: 15px;
+            background-color: #2E5077; 
+			color: #a6c8d5; 
+			padding: 15px 25px; 
+			border: none; 
+			font-size: 18px; 
+			cursor: pointer; 
+			border-radius: 8px; 
+			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         .shuffle-button:hover {
@@ -129,151 +135,151 @@
             }
         }
 
-	@keyframes vibrate-1 {
-	  0% {
-	    transform: translate(0)
-	  }
-	  20% {
-	    transform: translate(-2px, 2px)
-	  }
-	  40% {
-	    transform: translate(-2px, -2px)
-	  }
-	  60% {
-	    transform: translate(2px, 2px)
-	  }
-	  80% {
-	    transform: translate(2px, -2px)
-	  }
-	  100% {
-	    transform: translate(0)
-	  }
-	}
+		@keyframes vibrate-1 {
+		0% {
+			transform: translate(0)
+		}
+		20% {
+			transform: translate(-2px, 2px)
+		}
+		40% {
+			transform: translate(-2px, -2px)
+		}
+		60% {
+			transform: translate(2px, 2px)
+		}
+		80% {
+			transform: translate(2px, -2px)
+		}
+		100% {
+			transform: translate(0)
+		}
+		}
 
-	@keyframes vibrate-s {
-	  0% {
-	    transform: translate(0) rotate(2deg);
-	  }
-	  20% {
-	    transform: translate(-2px, 2px) rotate(2deg);
-	  }
-	  40% {
-	    transform: translate(-2px, -2px) rotate(2deg);
-	  }
-	  60% {
-	    transform: translate(2px, 2px) rotate(2deg);
-	  }
-	  80% {
-	    transform: translate(2px, -2px) rotate(2deg);
-	  }
-	  100% {
-	    transform: translate(0) rotate(2deg);
-	  }
-	}
+		@keyframes vibrate-s {
+		0% {
+			transform: translate(0) rotate(2deg);
+		}
+		20% {
+			transform: translate(-2px, 2px) rotate(2deg);
+		}
+		40% {
+			transform: translate(-2px, -2px) rotate(2deg);
+		}
+		60% {
+			transform: translate(2px, 2px) rotate(2deg);
+		}
+		80% {
+			transform: translate(2px, -2px) rotate(2deg);
+		}
+		100% {
+			transform: translate(0) rotate(2deg);
+		}
+		}
 
-	    @keyframes vibrate-h {
-	  0% {
-	    transform: translate(0) rotate(-1deg);
-	  }
-	  20% {
-	    transform: translate(-2px, 2px) rotate(-1deg);
-	  }
-	  40% {
-	    transform: translate(-2px, -2px) rotate(-1deg);
-	  }
-	  60% {
-	    transform: translate(2px, 2px) rotate(-1deg);
-	  }
-	  80% {
-	    transform: translate(2px, -2px) rotate(-1deg);
-	  }
-	  100% {
-	    transform: translate(0) rotate(-1deg);
-	  }
-	}
+			@keyframes vibrate-h {
+		0% {
+			transform: translate(0) rotate(-1deg);
+		}
+		20% {
+			transform: translate(-2px, 2px) rotate(-1deg);
+		}
+		40% {
+			transform: translate(-2px, -2px) rotate(-1deg);
+		}
+		60% {
+			transform: translate(2px, 2px) rotate(-1deg);
+		}
+		80% {
+			transform: translate(2px, -2px) rotate(-1deg);
+		}
+		100% {
+			transform: translate(0) rotate(-1deg);
+		}
+		}
 
-	    @keyframes vibrate-e {
-	  0% {
-	    transform: translate(0) rotate(2.5deg);
-	  }
-	  20% {
-	    transform: translate(-2px, 2px) rotate(2.5deg);
-	  }
-	  40% {
-	    transform: translate(-2px, -2px) rotate(2.5deg);
-	  }
-	  60% {
-	    transform: translate(2px, 2px) rotate(2.5deg);
-	  }
-	  80% {
-	    transform: translate(2px, -2px) rotate(2.5deg);
-	  }
-	  100% {
-	    transform: translate(0) rotate(2.5deg);
-	  }
-	}
-	    @keyframes vibrate-n {
-	  0% {
-	    transform: translate(0) rotate(8deg);
-	  }
-	  20% {
-	    transform: translate(-2px, 2px) rotate(8deg);
-	  }
-	  40% {
-	    transform: translate(-2px, -2px) rotate(8deg);
-	  }
-	  60% {
-	    transform: translate(2px, 2px) rotate(8deg);
-	  }
-	  80% {
-	    transform: translate(2px, -2px) rotate(8deg);
-	  }
-	  100% {
-	    transform: translate(0) rotate(8deg);
-	  }
-	}
+			@keyframes vibrate-e {
+		0% {
+			transform: translate(0) rotate(2.5deg);
+		}
+		20% {
+			transform: translate(-2px, 2px) rotate(2.5deg);
+		}
+		40% {
+			transform: translate(-2px, -2px) rotate(2.5deg);
+		}
+		60% {
+			transform: translate(2px, 2px) rotate(2.5deg);
+		}
+		80% {
+			transform: translate(2px, -2px) rotate(2.5deg);
+		}
+		100% {
+			transform: translate(0) rotate(2.5deg);
+		}
+		}
+			@keyframes vibrate-n {
+		0% {
+			transform: translate(0) rotate(8deg);
+		}
+		20% {
+			transform: translate(-2px, 2px) rotate(8deg);
+		}
+		40% {
+			transform: translate(-2px, -2px) rotate(8deg);
+		}
+		60% {
+			transform: translate(2px, 2px) rotate(8deg);
+		}
+		80% {
+			transform: translate(2px, -2px) rotate(8deg);
+		}
+		100% {
+			transform: translate(0) rotate(8deg);
+		}
+		}
 
-	    @keyframes vibrate-x {
-	  0% {
-	    transform: translate(0) rotate(6deg);
-	  }
-	  20% {
-	    transform: translate(-2px, 2px) rotate(6deg);
-	  }
-	  40% {
-	    transform: translate(-2px, -2px) rotate(6deg);
-	  }
-	  60% {
-	    transform: translate(2px, 2px) rotate(6deg);
-	  }
-	  80% {
-	    transform: translate(2px, -2px) rotate(6deg);
-	  }
-	  100% {
-	    transform: translate(0) rotate(6deg);
-	  }
-	}
+			@keyframes vibrate-x {
+		0% {
+			transform: translate(0) rotate(6deg);
+		}
+		20% {
+			transform: translate(-2px, 2px) rotate(6deg);
+		}
+		40% {
+			transform: translate(-2px, -2px) rotate(6deg);
+		}
+		60% {
+			transform: translate(2px, 2px) rotate(6deg);
+		}
+		80% {
+			transform: translate(2px, -2px) rotate(6deg);
+		}
+		100% {
+			transform: translate(0) rotate(6deg);
+		}
+		}
 
-	    @keyframes vibrate-y {
-	  0% {
-	    transform: translate(0) rotate(3deg);
-	  }
-	  20% {
-	    transform: translate(-2px, 2px) rotate(3deg);
-	  }
-	  40% {
-	    transform: translate(-2px, -2px) rotate(3deg);
-	  }
-	  60% {
-	    transform: translate(2px, 2px) rotate(3deg);
-	  }
-	  80% {
-	    transform: translate(2px, -2px) rotate(3deg);
-	  }
-	  100% {
-	    transform: translate(0) rotate(3deg);
-	  }
-	}
+			@keyframes vibrate-y {
+		0% {
+			transform: translate(0) rotate(3deg);
+		}
+		20% {
+			transform: translate(-2px, 2px) rotate(3deg);
+		}
+		40% {
+			transform: translate(-2px, -2px) rotate(3deg);
+		}
+		60% {
+			transform: translate(2px, 2px) rotate(3deg);
+		}
+		80% {
+			transform: translate(2px, -2px) rotate(3deg);
+		}
+		100% {
+			transform: translate(0) rotate(3deg);
+		}
+		}
 
         /* Hide audio controls */
         audio {
@@ -283,74 +289,120 @@
         .birthday-header {
             font-size: 30px;
             font-weight: bold;
-            color: #f2e3e5;
+            color: #a6c8d5;
             margin-bottom: 20px;
         }
-    </style>
+
+		.form {
+			display: block;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+            color: #2E5077;
+            background-color: #a6c8d5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+		}
+	</style>
 </head>
 <body class="gradient-background">
     <!-- Audio element to play music (initially paused) -->
-    <audio id="backgroundAudio" loop>
+    <audio id="backgroundAudio" autoplay loop>
         <source src="https://rectangle36.github.io/hehehe/Childish%20Gambino%20-%203005_[cut_20sec].mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <div class="quote-container">
-        <div id="note_container2" style="display: block;">
-            <div class="word">
-                <img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(10deg);">
-                <img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
-                <img src="http://farm7.staticflickr.com/6162/6204057052_072c6851a0_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(4deg);">
-                <img src="http://farm7.staticflickr.com/6132/5982183661_30be134733_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
-                <img src="http://farm8.staticflickr.com/7168/6596211537_41aff58351_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
-            </div>
-        
-            <div class="word">
-                <img src="http://farm3.staticflickr.com/2009/5740446052_8d6b1f6500_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
-                <img src="http://farm8.staticflickr.com/7347/16552493976_ba2506b77a_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
-                <img src="http://farm1.staticflickr.com/308/19772665506_5ec51cc904_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(4deg);">
-                <img src="http://farm5.staticflickr.com/4442/36065960030_f18243b95e_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
-                <img src="http://farm4.staticflickr.com/3441/3778499276_da5c981f3c_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
-            </div>
+        <div id="displayThis" style="display: block;">
+			<div id="note_container2">
+				<div class="word">
+					<img src="http://farm8.staticflickr.com/7117/7131875879_94e8932904_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(10deg);">
+					<img src="http://farm7.staticflickr.com/6107/6303499355_f68ef97c2e_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
+					<img src="http://farm7.staticflickr.com/6162/6204057052_072c6851a0_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(4deg);">
+					<img src="http://farm7.staticflickr.com/6132/5982183661_30be134733_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
+					<img src="http://farm8.staticflickr.com/7168/6596211537_41aff58351_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
+				</div>
+			
+				<div class="word">
+					<img src="http://farm3.staticflickr.com/2009/5740446052_8d6b1f6500_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
+					<img src="http://farm8.staticflickr.com/7347/16552493976_ba2506b77a_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
+					<img src="http://farm1.staticflickr.com/308/19772665506_5ec51cc904_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(4deg);">
+					<img src="http://farm5.staticflickr.com/4442/36065960030_f18243b95e_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-10deg);">
+					<img src="http://farm4.staticflickr.com/3441/3778499276_da5c981f3c_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
+				</div>
+	
+				<div class="word">
+					<img src="http://farm5.staticflickr.com/4087/4840193735_135b5f4a5f_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-3deg);">
+					<img src="http://farm5.staticflickr.com/4083/4840802406_ce72b7e12b_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
+					<img src="http://farm5.staticflickr.com/4132/4840169129_541eb7fd91_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
+				</div>	
+			
+				<br class="clear">
+			</div>
 
-		<div class="word">
-			<img src="http://farm5.staticflickr.com/4087/4840193735_135b5f4a5f_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-3deg);">
-                	<img src="http://farm5.staticflickr.com/4083/4840802406_ce72b7e12b_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
-                	<img src="http://farm5.staticflickr.com/4132/4840169129_541eb7fd91_t.jpg" class="char2" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
-		</div>	
-        
-            <br class="clear">
-        </div>
-        
-        <!-- The folder button (Initially displayed) -->
-        <button class="button" id="openButton" onclick="showQuote()">Birthday Wishes</button>
+            <button class="button" id="openButton" onclick="frank()">Birthday Wishes</button>
+	
+			<img id="frank" style="width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 30px; padding-top: 500px;" src="https://i.imgur.com/ypryVWV.png">
+	
+			<div id="note_container">
+					<div class="word">
+						<img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" id="s" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
+						<img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="chars" id="h" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
+						<img src="http://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" class="char" id="e" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(2.5deg);">
+						<img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="chars" id="n" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
+						<img src="http://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" class="char" id="x" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(6deg);">
+						<img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="chars" id="y" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
+					</div>
+					<br class="clear">
+				</div>
+	
+			<!-- The quote and shuffle button (Initially hidden) -->
+			<div class="quote" id="quoteContainer" style="margin-bottom: 35px;">
+				<i class="fa-solid fa-cake-candles" style="margin-bottom: 15px;"></i>
+				<div id="quoteText">wishing you a day filled with happiness and a year filled with joy!</div>
+				<button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
+			</div>
 
-	<img id="frank" style="display: none; width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 30px;" src="https://i.imgur.com/ypryVWV.png">
+			<i class="fa-solid fa-arrow-down-long"></i>
 
-        <div id="note_container" style="display: none;">
-                <div class="word">
-                    <img src="http://farm4.staticflickr.com/3452/3929132067_77a7499895_t.jpg" class="char" id="s" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(2deg);">
-                    <img src="http://farm4.staticflickr.com/3411/3582783970_57544c205f_t.jpg" class="chars" id="h" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(-1deg);">
-                    <img src="http://farm5.staticflickr.com/4042/4327144669_f31e5521e7_t.jpg" class="char" id="e" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(2.5deg);">
-                    <img src="http://farm8.staticflickr.com/7155/6668392439_7c745174df_t.jpg" class="chars" id="n" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(8deg);">
-                    <img src="http://farm5.staticflickr.com/4870/45005087594_fbef2cfbb1_t.jpg" class="char" id="x" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(6deg);">
-                    <img src="http://farm3.staticflickr.com/2785/4373289365_9ed352d9eb_t.jpg" class="chars" id="y" style="width: 35px; height: 35px; object-fit: cover; margin: 0 5px; transform: rotate(3deg);">
-                </div>
-                <br class="clear">
-            </div>
-
-        <!-- The quote and shuffle button (Initially hidden) -->
-        <div class="quote" id="quoteContainer">
-            <div id="quoteText">wishing you a day filled with happiness and a year filled with joy!</div>
-            <button class="shuffle-button" onclick="shuffleQuote()">Shuffle</button>
-        </div>
+			<section class="form" style="margin-top: 35px;">
+				<i class="fa-regular fa-envelope"></i>
+				<p style="text-align: center; margin-bottom: 20px; color: #2E5077;">Send me a message</p>
+				
+				<form action="https://formspree.io/f/xvggdyyb" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+					<label for="message" style="font-size: 16px; color: #333;">
+						Your message:
+					</label>
+					<textarea name="message" id="message" rows="5" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;"></textarea>
+					
+					<button type="submit" style="margin-right: auto; margin-left: auto; width: fit-content; background-color: #2E5077; color: #F2E3E5; padding: 15px 25px; border: none; font-size: 18px; cursor: pointer; border-radius: 8px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);">
+						Send
+					</button>
+				</form>
+			</section>  
+		</div>
     </div>
 
     <script>
-        // Play background audio when the quote is opened
-        function playAudio() {
+        function frank() {
+            const frank = document.getElementById('note_container');
+            if (frank) {
+                frank.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            // Play the audio when the page is loaded
             const audio = document.getElementById('backgroundAudio');
             audio.play(); // Start playing the audio
+        }
+
+        function playAudio() {
+            
+        }
+
+        function scrollToFrank() {
+            
         }
 
         // Birthday wish data
@@ -360,47 +412,46 @@
             'here’s to another year of success, happiness, and unforgettable moments!',
             'on your special day, may all your dreams come true. wishing you the happiest birthday!',
             'may your birthday be as wonderful and amazing as you are.',
-		'january 13th',
-		'happy birthday shen',
-		'idk what else to say here',
-		'childish gambino - 3005',
-		'🏃‍♂️💨',
-		'semoga tahun ini 🤔',
-		'"gotta tell you how much i vibe with you"',
-		'do not go insane',
-		'good luck with anything ig :D',
-		'jangan banyak tingkah ntar masuk bk lagi',
-		'don’t be suicidal okay',
-		'16 years',
-		'wow you’ve made it this far',
-		'good luck with your studies',
-		'text me "you’re a simp" if you’re reading this',
-		'look you’re 16 now',
-		'enjoy your day!',
-		'wishing you a day filled with happiness and a year filled with joy!'
+			'january 13th',
+			'happy birthday shen',
+			'idk what else to say here',
+			'childish gambino - 3005',
+			'🏃‍♂️💨',
+			'semoga tahun ini 🤔',
+			'"gotta tell you how much i vibe with you"',
+			'do not go insane',
+			'good luck with anything ig :D',
+			'jangan banyak tingkah ntar masuk bk lagi',
+			'don’t be suicidal okay',
+			'16 years',
+			'wow you’ve made it this far',
+			'good luck with your studies',
+			'text me "you’re a simp" if you’re reading this',
+			'look you’re 16 now',
+			'enjoy your day!',
+			'wishing you a day filled with happiness and a year filled with joy!'
         ];
 
         // Show the quote when button is clicked
-        function showQuote() {
-            document.getElementById('note_container2').style.display = 'none';
-            document.getElementById('openButton').style.display = 'none';
-            document.getElementById('note_container').style.display = 'block'
-		document.getElementById('frank').style.display = 'block'// Hide the button
-            const quoteContainer = document.getElementById('quoteContainer');
-            quoteContainer.style.display = 'block'; // Show the quote
-            quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
-            playAudio(); // Play the audio when the quote is opened
-        }
+        // function showQuote() {
+		// 	document.getElementById('openButton').style.display = 'none';
+        //     document.getElementById('displayThis').style.display = 'block';
+		// 	document.getElementById('frank').style.display = 'block'// Hide the button
+        //     const quoteContainer = document.getElementById('quoteContainer');
+        //     quoteContainer.style.display = 'block'; // Show the quote
+        //     quoteContainer.classList.add('fade-in'); // Trigger fade-in animation
+        //     playAudio(); // Play the audio when the quote is opened
+        // }
 
 	    let currentIndex = 0;
 
         // Shuffle the quote when shuffle button is clicked
         function shuffleQuote() {
             // Set the quote text to the current index in the birthdayWishes array
-	    document.getElementById('quoteText').textContent = birthdayWishes[currentIndex];
+	    	document.getElementById('quoteText').textContent = birthdayWishes[currentIndex];
 	
-	    // Increment the index and reset it to 0 if it exceeds the array length
-	    currentIndex = (currentIndex + 1) % birthdayWishes.length
+			// Increment the index and reset it to 0 if it exceeds the array length
+			currentIndex = (currentIndex + 1) % birthdayWishes.length
         }
     </script>
 </body>
